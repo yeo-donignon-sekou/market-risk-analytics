@@ -53,3 +53,33 @@ distributions de rendements, les corrélations entre actifs et les drawdowns.
 
 Les données nettoyées et les rendements produits dans ce notebook constituent les entrées des étapes 
 suivantes consacrées à la construction du portefeuille et à la mesure du risque.
+
+### Notebook 02 — [Construction du portefeuille et analyse du P&L](https://github.com/yeo-donignon-sekou/market-risk-analytics/blob/main/notebooks/02_portfolio_and_pnl_analysis.ipynb)
+
+Ce notebook construit un portefeuille multi-actifs à partir des données de marché préparées dans le Notebook 01. 
+Le portefeuille, d'une valeur initiale de **1 000 000 €**, est composé de six positions représentant plusieurs 
+facteurs de risque : actions américaines et européennes, taux d'intérêt, crédit, matières premières et change.
+
+Les allocations initiales sont converties en quantités d'actifs puis valorisées quotidiennement selon une stratégie 
+buy-and-hold. Le notebook calcule la valeur du portefeuille, les rendements, le P&L quotidien et cumulé, les poids 
+effectifs des positions ainsi que leur contribution individuelle au P&L. L'analyse est complétée par le suivi du 
+drawdown et de la volatilité glissante.
+
+#### Résultats principaux
+
+- Sur **2 232 observations de rendements**, la valeur du portefeuille passe de **1 000 000 €** à 
+  **1 999 432,66 €**, soit un P&L cumulé de **999 432,66 €** sur la période étudiée.
+- La volatilité annualisée du portefeuille s'établit à **10,39 %**, tandis que le drawdown maximal atteint 
+  **-22,17 %**.
+- Le pire P&L quotidien est enregistré le **12 mars 2020**, avec une perte de **58 860,17 €**. Les actions 
+  américaines contribuent à **43,07 %** de cette perte et les actions européennes à **34,57 %**.
+- Sur l'ensemble de la période, les actions américaines représentent la principale contribution au P&L avec 
+  **534 961,36 €**, soit **53,53 %** du P&L total. Elles sont suivies par les actions européennes avec 
+  **226 407,59 € (22,65 %)** et l'or avec **195 141,82 € (19,53 %)**.
+- Les Treasuries américains apportent une contribution positive de **18 017,96 €**, tandis que l'exposition 
+  EUR/USD contribue négativement au résultat à hauteur de **-5 059,87 €**.
+- Les contributions individuelles au P&L sont réconciliées avec le P&L global du portefeuille afin de vérifier 
+  la cohérence des calculs.
+
+Les séries de valeur du portefeuille, rendements, P&L et contributions par position sont ensuite enregistrées 
+et utilisées comme données d'entrée pour le Notebook 03 consacré à la mesure du risque par VaR et Expected Shortfall.
