@@ -83,3 +83,42 @@ drawdown et de la volatilité glissante.
 
 Les séries de valeur du portefeuille, rendements, P&L et contributions par position sont ensuite enregistrées 
 et utilisées comme données d'entrée pour le Notebook 03 consacré à la mesure du risque par VaR et Expected Shortfall.
+
+### Notebook 03 — [Value at Risk et Expected Shortfall](https://github.com/yeo-donignon-sekou/market-risk-analytics/blob/main/notebooks/03_var_and_expected_shortfall.ipynb)
+
+Ce notebook est consacré à la mesure quantitative du risque de marché du portefeuille construit précédemment. 
+L'objectif est d'estimer les pertes potentielles à horizon **1 jour** et de comparer plusieurs approches de 
+Value at Risk (VaR) et d'Expected Shortfall (ES).
+
+Cinq méthodologies de VaR sont étudiées : **historique, gaussienne, Student-t, Monte Carlo Student-t et 
+EWMA gaussienne**, aux niveaux de confiance de **95 %, 97,5 % et 99 %**. L'Expected Shortfall est également 
+calculée afin de compléter la VaR par une mesure de la sévérité moyenne des pertes situées au-delà du seuil.
+
+L'analyse statique est complétée par la construction de **prévisions glissantes de risque à horizon 1 jour**, 
+calculées sur une fenêtre historique de **250 observations**. Cette approche permet de produire des mesures 
+de risque utilisant uniquement l'information disponible avant chaque date d'évaluation et prépare le 
+backtesting des modèles dans le notebook suivant.
+
+#### Résultats principaux
+
+- Les rendements du portefeuille présentent une volatilité annualisée de **10,39 %**, une asymétrie de 
+  **-0,24** et une kurtosis excédentaire de **10,31**, indiquant des queues de distribution nettement plus 
+  importantes que celles d'une distribution normale.
+- L'ajustement d'une loi de Student conduit à **3,32 degrés de liberté**, ce qui confirme l'intérêt d'une 
+  distribution à queues épaisses pour modéliser les rendements du portefeuille.
+- À **99 %**, la VaR historique est la plus élevée parmi les modèles étudiés, avec **35 717,61 €**, contre 
+  **34 621,20 €** pour la Student-t, **34 442,08 €** pour Monte Carlo Student-t, **29 900,82 €** pour 
+  l'EWMA gaussienne et **29 774,89 €** pour l'approche gaussienne.
+- L'Expected Shortfall historique à **99 %** atteint **52 141,53 €**, contre une VaR historique de 
+  **35 717,61 €**. La perte moyenne au-delà du seuil de VaR est ainsi environ **46 % supérieure** au niveau 
+  de VaR lui-même.
+- À **99 %**, l'Expected Shortfall obtenue avec la Student-t atteint **51 703,74 €**, contre seulement 
+  **34 208,70 €** avec l'hypothèse gaussienne. Cet écart met en évidence la sensibilité de la mesure du 
+  risque extrême au choix de la distribution.
+- Le pire rendement journalier observé dans l'échantillon est de **-5,62 %**, correspondant à une perte 
+  de **58 860,17 €** le **12 mars 2020**.
+- Les prévisions glissantes sont produites à partir d'une fenêtre de **250 jours**, générant 
+  **1 982 observations** exploitables pour l'évaluation hors échantillon des modèles.
+
+Les séries de VaR, d'Expected Shortfall et les prévisions glissantes produites dans ce notebook sont ensuite 
+utilisées pour le backtesting et la validation statistique des modèles.
