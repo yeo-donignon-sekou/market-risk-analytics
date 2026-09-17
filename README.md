@@ -145,3 +145,46 @@ L'analyse est complétée par le **Basel Traffic Light** à 99 %, puis par des s
 Ces résultats montrent l'intérêt de compléter la VaR par deux niveaux d'analyse distincts : le **backtesting**, qui évalue la cohérence des prévisions avec les pertes effectivement observées, et le **stress testing**, qui mesure l'exposition du portefeuille à des scénarios extrêmes explicitement définis.
 
 Les résultats de backtesting, les stress tests et les contributions aux pertes sont ensuite transmis au Notebook 05 pour l'analyse des facteurs de risque, des concentrations et la consolidation du reporting final.
+
+### Notebook 05 — [Analyse des facteurs de risque et reporting final](https://github.com/yeo-donignon-sekou/market-risk-analytics/blob/main/notebooks/Risk_Factors_and_Final_Reporting.ipynb)
+
+Ce dernier notebook complète l'analyse du risque de marché par une étude des facteurs de risque, 
+des contributions au risque et de la concentration du portefeuille. Il consolide ensuite les 
+résultats produits dans les notebooks précédents afin de construire un reporting synthétique du 
+profil de risque du portefeuille.
+
+L'analyse factorielle repose notamment sur une **Analyse en Composantes Principales (PCA)** appliquée 
+aux rendements standardisés des actifs. Elle est complétée par le calcul de la **Marginal VaR**, de la 
+**Component VaR**, des contributions à la volatilité et d'indicateurs de concentration.
+
+#### Résultats principaux
+
+- Les **3 premières composantes principales** expliquent **80,51 %** de la variance totale des 
+  rendements standardisés : **37,25 %** pour PC1, **26,60 %** pour PC2 et **16,66 %** pour PC3.
+- Les **actions américaines (US Equity)** constituent la première source de risque du portefeuille : 
+  elles représentent **25 % de l'exposition**, mais contribuent à **42,22 % de la volatilité totale**.
+- Elles constituent également le principal contributeur à la **Component VaR**, avec une contribution 
+  de **12 153,19 €**.
+- La somme des contributions individuelles conduit à une **Component VaR totale de 28 785,30 €**, 
+  permettant d'attribuer le risque global du portefeuille aux différentes positions.
+- L'indice de concentration **Herfindahl-Hirschman (HHI)** s'établit à **0,185**, correspondant à un 
+  nombre effectif d'environ **5,41 positions**. Le niveau de concentration du portefeuille est classé 
+  comme **modéré** dans le cadre retenu dans le notebook.
+- Le reporting final consolide une **VaR historique à 99 % de 35 717,61 €**, une 
+  **Expected Shortfall historique à 99 % de 52 141,53 €**, ainsi qu'un drawdown maximal de 
+  **-22,17 %**.
+- La validation du modèle de VaR historique à 99 % conserve **34 exceptions sur 1 982 observations** 
+  et conduit à une évaluation **"Requires review"**, tandis que le Basel Traffic Light est en 
+  **zone verte**.
+- Le scénario hypothétique le plus sévère reste **Severe Global Crisis**, avec une perte estimée à 
+  **400 886,25 €**, soit **20,05 %** de la valeur du portefeuille.
+
+#### Reporting et consolidation
+
+Le notebook rassemble les résultats du pipeline dans plusieurs formats destinés à faciliter leur 
+réutilisation : **CSV, Parquet, JSON et Excel**. Il produit notamment les contributions à la 
+volatilité, la Component VaR, les résultats de PCA, les mesures de concentration, les résultats de 
+backtesting et les stress tests.
+
+Le pipeline complet est finalement soumis à des contrôles de cohérence et d'intégrité afin de vérifier 
+que les sorties des cinq notebooks peuvent être consolidées et réutilisées de manière cohérente.
