@@ -127,7 +127,7 @@ utilisées pour le backtesting et la validation statistique des modèles.
 
 Ce notebook évalue la fiabilité des prévisions glissantes de VaR produites dans le Notebook 03 et analyse la résistance du portefeuille à des conditions de marché extrêmes.
 
-Trois modèles, **VaR historique, VaR gaussienne paramétrique et VaR EWMA gaussienne** sont backtestés aux seuils de confiance de **95 % et 99 %**. L'évaluation repose sur le nombre et la fréquence des exceptions, complétés par le **test de couverture inconditionnelle de Kupiec**, le **test d'indépendance de Christoffersen** et un **test de couverture conditionnelle**.
+Trois modèles, **VaR historique, VaR gaussienne paramétrique et VaR EWMA** sont backtestés aux seuils de confiance de **95 % et 99 %**. L'évaluation repose sur le nombre et la fréquence des exceptions, complétés par le **test de couverture inconditionnelle de Kupiec**, le **test d'indépendance de Christoffersen** et un **test de couverture conditionnelle**.
 
 L'analyse est complétée par le **Basel Traffic Light** à 99 %, puis par des stress tests historiques et hypothétiques. Les scénarios de stress couvrent notamment les chocs actions, taux, crédit, change et matières premières, avec une attribution des pertes par position.
 
