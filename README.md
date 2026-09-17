@@ -122,3 +122,26 @@ backtesting des modèles dans le notebook suivant.
 
 Les séries de VaR, d'Expected Shortfall et les prévisions glissantes produites dans ce notebook sont ensuite 
 utilisées pour le backtesting et la validation statistique des modèles.
+
+### Notebook 04 — [Backtesting de la VaR et Stress Testing](https://github.com/yeo-donignon-sekou/market-risk-analytics/blob/main/notebooks/04_backtesting_and_stress_testing.ipynb)
+
+Ce notebook évalue la fiabilité des prévisions glissantes de VaR produites dans le Notebook 03 et analyse la résistance du portefeuille à des conditions de marché extrêmes.
+
+Trois modèles — **VaR historique, VaR gaussienne paramétrique et VaR EWMA gaussienne** — sont backtestés aux seuils de confiance de **95 % et 99 %**. L'évaluation repose sur le nombre et la fréquence des exceptions, complétés par le **test de couverture inconditionnelle de Kupiec**, le **test d'indépendance de Christoffersen** et un **test de couverture conditionnelle**.
+
+L'analyse est complétée par le **Basel Traffic Light** à 99 %, puis par des stress tests historiques et hypothétiques. Les scénarios de stress couvrent notamment les chocs actions, taux, crédit, change et matières premières, avec une attribution des pertes par position.
+
+#### Résultats principaux
+
+- Le backtesting de la **VaR historique à 99 %** repose sur **1 982 observations** et identifie **34 exceptions**, soit un taux d'exception observé de **1,72 %**, contre **1 %** attendu pour une VaR à 99 %.
+- Pour cette VaR historique à 99 %, le **test de Kupiec est rejeté**, indiquant que la fréquence des exceptions n'est pas compatible avec le niveau de couverture attendu au seuil statistique retenu.
+- Le **test d'indépendance de Christoffersen est également rejeté**, ce qui met en évidence une dépendance temporelle des exceptions. Le **test de couverture conditionnelle** conduit lui aussi au rejet du modèle.
+- Malgré ces résultats statistiques, la classification **Basel Traffic Light** ressort en **zone verte** pour l'évaluation réalisée dans le notebook. Cette différence illustre que la classification réglementaire et les tests statistiques n'évaluent pas exactement les mêmes propriétés du modèle.
+- Les stress tests historiques identifient le scénario **2022 Inflation and Rate Shock** comme le scénario historique le plus défavorable parmi les périodes étudiées.
+- Parmi les **6 scénarios hypothétiques**, le scénario **Severe Global Crisis** génère la perte la plus importante, estimée à **400 886,25 €** sur la valeur courante du portefeuille.
+- Rapportée à une valeur de portefeuille de **1 999 432,66 €**, cette perte représente environ **20,05 %** du portefeuille.
+- L'analyse des pertes historiques est également étendue à plusieurs horizons de **1, 5, 10 et 20 jours de bourse**, afin d'étudier l'impact de l'allongement de l'horizon de risque.
+
+Ces résultats montrent l'intérêt de compléter la VaR par deux niveaux d'analyse distincts : le **backtesting**, qui évalue la cohérence des prévisions avec les pertes effectivement observées, et le **stress testing**, qui mesure l'exposition du portefeuille à des scénarios extrêmes explicitement définis.
+
+Les résultats de backtesting, les stress tests et les contributions aux pertes sont ensuite transmis au Notebook 05 pour l'analyse des facteurs de risque, des concentrations et la consolidation du reporting final.
