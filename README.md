@@ -90,7 +90,7 @@ Ce notebook est consacré à la mesure quantitative du risque de marché du port
 L'objectif est d'estimer les pertes potentielles à horizon **1 jour** et de comparer plusieurs approches de 
 Value at Risk (VaR) et d'Expected Shortfall (ES).
 
-Cinq méthodologies de VaR sont étudiées : **historique, gaussienne, Student-t, Monte Carlo Student-t et 
+Cinq méthodologies de VaR sont étudiées : **historique, gaussienne, Student-t, Monte Carlo  et 
 EWMA gaussienne**, aux niveaux de confiance de **95 %, 97,5 % et 99 %**. L'Expected Shortfall est également 
 calculée afin de compléter la VaR par une mesure de la sévérité moyenne des pertes situées au-delà du seuil.
 
